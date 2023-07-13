@@ -33,5 +33,12 @@
     "rollup-plugin-typescript-paths": "^1.4.0",
     "tslib": "^2.6.0",
     "vitest": "^0.33.0"
-  }
+  },
+  "files": [
+    "dist/get-notion-object-title.d.ts",
+    "dist/get-notion-object-title.d.js",
+    "dist/get-notion-object-title.d.mjs",
+    "dist/manifest.json",
+    "dist/types.d.ts"
+  ]
 }

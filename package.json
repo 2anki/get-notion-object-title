@@ -1,0 +1,37 @@
+{
+  "name": "get-notion-object-title",
+  "version": "0.0.0",
+  "description": "get human readable names from Notion objects.",
+  "main": "dist/get-notion-object-title.js",
+  "scripts": {
+    "build": "npm run prebuild; tsc && vite build",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
+    "prebuild": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2anki/get-notion-object-title.git"
+  },
+  "keywords": [
+    "notion",
+    "title",
+    "page",
+    "title"
+  ],
+  "author": "Alexander Alemayhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2anki/get-notion-object-title/issues"
+  },
+  "homepage": "https://github.com/2anki/get-notion-object-title#readme",
+  "dependencies": {
+    "@notionhq/client": "^2.2.7"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.2",
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "tslib": "^2.6.0",
+    "vitest": "^0.33.0"
+  }
+}

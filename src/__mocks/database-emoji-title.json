@@ -1,0 +1,97 @@
+{
+        "object": "database",
+        "id": "48f642b9-056d-4f7b-b7c1-5e6c8232aaad",
+        "cover": null,
+        "icon": {
+                "type": "emoji",
+                "emoji": "💡"
+        },
+        "created_time": "2020-11-17T09:58:00.000Z",
+        "created_by": {
+                "object": "user",
+                "id": "1590db54-99fe-467c-a656-be319fe6ca8b"
+        },
+        "last_edited_by": {
+                "object": "user",
+                "id": "1590db54-99fe-467c-a656-be319fe6ca8b"
+        },
+        "last_edited_time": "2023-06-23T14:03:00.000Z",
+        "title": [
+                {
+                        "type": "text",
+                        "text": {
+                                "content": "TOPICS",
+                                "link": null
+                        },
+                        "annotations": {
+                                "bold": false,
+                                "italic": false,
+                                "strikethrough": false,
+                                "underline": false,
+                                "code": false,
+                                "color": "default"
+                        },
+                        "plain_text": "TOPICS",
+                        "href": null
+                }
+        ],
+        "description": [],
+        "is_inline": false,
+        "properties": {
+                "Status": {
+                        "id": "%3F%3AEQ",
+                        "name": "Status",
+                        "type": "select",
+                        "select": {
+                                "options": [
+                                        {
+                                                "id": "1",
+                                                "name": "Not started",
+                                                "color": "red"
+                                        },
+                                        {
+                                                "id": "5bc17306-1ad2-4770-b682-4586d6896c05",
+                                                "name": "Learning",
+                                                "color": "gray"
+                                        },
+                                        {
+                                                "id": "ef6f4be5-b331-4de5-b7dc-db55e88516b7",
+                                                "name": "PRIOTIZED",
+                                                "color": "brown"
+                                        }
+                                ]
+                        }
+                },
+                "Ankified": {
+                        "id": "%3Fefu",
+                        "name": "Ankified",
+                        "type": "checkbox",
+                        "checkbox": {}
+                },
+                "Date": {
+                        "id": "I%7C%5B%40",
+                        "name": "Date",
+                        "type": "date",
+                        "date": {}
+                },
+                "URL": {
+                        "id": "sASH",
+                        "name": "URL",
+                        "type": "url",
+                        "url": {}
+                },
+                "Name": {
+                        "id": "title",
+                        "name": "Name",
+                        "type": "title",
+                        "title": {}
+                }
+        },
+        "parent": {
+                "type": "workspace",
+                "workspace": true
+        },
+        "url": "https://www.notion.so/48f642b9056d4f7bb7c15e6c8232aaad",
+        "public_url": null,
+        "archived": false
+}

@@ -1,0 +1,77 @@
+{
+        "object": "page",
+        "id": "9afa120c-ec30-4ad0-be17-40336025e257",
+        "created_time": "2022-12-18T09:49:00.000Z",
+        "last_edited_time": "2022-12-18T09:49:00.000Z",
+        "created_by": {
+                "object": "user",
+                "id": "1590db54-99fe-467c-a656-be319fe6ca8b"
+        },
+        "last_edited_by": {
+                "object": "user",
+                "id": "1590db54-99fe-467c-a656-be319fe6ca8b"
+        },
+        "cover": null,
+        "icon": {
+                "type": "external",
+                "external": {
+                        "url": "https://supermemopedia.com/favicon.ico"
+                }
+        },
+        "parent": {
+                "type": "database_id",
+                "database_id": "48f642b9-056d-4f7b-b7c1-5e6c8232aaad"
+        },
+        "archived": false,
+        "properties": {
+                "Status": {
+                        "id": "%3F%3AEQ",
+                        "type": "select",
+                        "select": null
+                },
+                "Ankified": {
+                        "id": "%3Fefu",
+                        "type": "checkbox",
+                        "checkbox": false
+                },
+                "Date": {
+                        "id": "I%7C%5B%40",
+                        "type": "date",
+                        "date": {
+                                "start": "2022-12-17",
+                                "end": null,
+                                "time_zone": null
+                        }
+                },
+                "URL": {
+                        "id": "sASH",
+                        "type": "url",
+                        "url": "https://supermemopedia.com/index.php?title=What_is_the_optimum_daily_learning_time"
+                },
+                "Name": {
+                        "id": "title",
+                        "type": "title",
+                        "title": [
+                                {
+                                        "type": "text",
+                                        "text": {
+                                                "content": "What is the optimum daily learning time - SuperMemopedia",
+                                                "link": null
+                                        },
+                                        "annotations": {
+                                                "bold": false,
+                                                "italic": false,
+                                                "strikethrough": false,
+                                                "underline": false,
+                                                "code": false,
+                                                "color": "default"
+                                        },
+                                        "plain_text": "What is the optimum daily learning time - SuperMemopedia",
+                                        "href": null
+                                }
+                        ]
+                }
+        },
+        "url": "https://www.notion.so/What-is-the-optimum-daily-learning-time-SuperMemopedia-9afa120cec304ad0be1740336025e257",
+        "public_url": null
+}

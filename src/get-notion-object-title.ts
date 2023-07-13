@@ -8,55 +8,35 @@ import {
 import { Icon } from './types';
 import { parseText } from './parse-text';
 
-const getEmoji = (icon: Icon) => {
-  if (!icon || !('emoji' in icon)) {
-    return null;
-  }
-  return icon.emoji;
-};
+const getEmoji = (icon: Icon) => (icon && 'emoji' in icon ? icon.emoji : null);
 
-function flattenTextItems(textItems: RichTextItemResponse[]): string {
-  if (!Array.isArray(textItems)) {
-    return '';
-  }
-  return textItems.map((item) => item.plain_text).join('');
-}
+const flattenTextItems = (textItems: RichTextItemResponse[]): string =>
+  Array.isArray(textItems)
+    ? textItems.map((item) => item.plain_text).join('')
+    : '';
 
-export function getNotionBlockTitle(notionObject: unknown): any {
+const getTitleFromProperty = (property: any) =>
+  property && 'title' in property
+    ? flattenTextItems(property.title as RichTextItemResponse[])
+    : null;
+
+export const getNotionBlockTitle = (notionObject: unknown): any => {
   const page = notionObject as PageObjectResponse;
-  if (isFullPage(page) && page.object === 'page') {
-    const properties = page.properties;
-    if (!properties) {
-      return null;
-    }
-
-    if (properties.title && 'title' in properties.title) {
-      const richTextItems = properties.title.title as RichTextItemResponse[];
-      return flattenTextItems(richTextItems);
-    }
-
-    if (properties.Page && 'title' in properties.Page) {
-      const richTextItems = properties.Page.title as RichTextItemResponse[];
+  if (isFullPage(page) && page.object === 'page' && page.properties) {
+    const propertyKey = ['title', 'Page', 'Name'].find((key) =>
+      getTitleFromProperty(page.properties[key])
+    );
+    if (propertyKey) {
       const icon = getEmoji(page.icon) ?? '';
-      return `${icon}${flattenTextItems(richTextItems)}`;
-    }
-
-    if (properties.Name && 'title' in properties.Name) {
-      const richTextItems = properties.Name.title as RichTextItemResponse[];
-      return flattenTextItems(richTextItems);
+      return `${icon}${getTitleFromProperty(page.properties[propertyKey])}`;
     }
   }
 
   const database = notionObject as DatabaseObjectResponse;
   if (isFullDatabase(database)) {
-    if (database.icon) {
-      const icon = getEmoji(page.icon) ?? '';
-      return `${icon}${flattenTextItems(database.title)}`;
-    }
-    return flattenTextItems(database.title);
+    const icon = getEmoji(page.icon) ?? '';
+    return `${icon}${flattenTextItems(database.title)}`;
   }
 
   return parseText(notionObject);
-}
-
-export default getNotionBlockTitle;
+};

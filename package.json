@@ -1,6 +1,6 @@
 {
   "name": "get-notion-object-title",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "get human readable names from Notion objects.",
   "main": "dist/get-notion-object-title.js",
   "scripts": {

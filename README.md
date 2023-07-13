@@ -1,6 +1,6 @@
 # Get Notion Object Title
 
-The Notion API does not provide a simple way to retrieve the title of an object.
+The [Notion API](https://developers.notion.com/reference/intro) does not provide a simple way to retrieve the title of an object.
 This module provides you with a simple API where you can pass in a Notion Object
 and receive a human readable string.
 
@@ -19,7 +19,7 @@ Depending on the type of the object there are some rules that are applied.
 
 ### Page
 
-If the page has any of the following properties they will be used and they do exclude each other:
+If the [page](https://developers.notion.com/reference/page) has any of the following properties they will be used and they do exclude each other:
 
 - Title
 - Page
@@ -27,11 +27,11 @@ If the page has any of the following properties they will be used and they do ex
 
 ### Database
 
-The database uses the top level `title` attribute.
+The [database](https://developers.notion.com/reference/database) uses the top level `title` attribute.
 
 ### Other
 
-The remaining blocks are converted to plain text using the rich text.
+The remaining blocks are converted to plain text using the [rich text items](https://developers.notion.com/reference/rich-text).
 
 ## License
 

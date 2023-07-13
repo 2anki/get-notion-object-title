@@ -4,6 +4,10 @@ The [Notion API](https://developers.notion.com/reference/intro) does not provide
 This module provides you with a simple API where you can pass in a Notion Object
 and receive a human readable string.
 
+## Install
+
+> npm i get-notion-object-title
+
 ## Usage
 
 ```typescript

@@ -2,12 +2,12 @@
   "name": "get-notion-object-title",
   "version": "0.0.5",
   "description": "get human readable names from Notion objects.",
-  "main": "dist/get-notion-object-title.js",
+  "main": "lib/get-notion-object-title.js",
   "scripts": {
     "build": "npm run prebuild; tsc && vite build",
     "test": "vitest",
     "coverage": "vitest --coverage",
-    "prebuild": "rm -rf dist"
+    "prebuild": "rm -rf lib"
   },
   "repository": {
     "type": "git",
@@ -35,10 +35,13 @@
     "vitest": "^0.33.0"
   },
   "files": [
-    "dist/get-notion-object-title.d.ts",
-    "dist/get-notion-object-title.d.js",
-    "dist/get-notion-object-title.d.mjs",
-    "dist/manifest.json",
-    "dist/types.d.ts"
-  ]
+    "lib/get-notion-object-title.d.ts",
+    "lib/get-notion-object-title.d.js",
+    "lib/get-notion-object-title.d.mjs",
+    "lib/manifest.json",
+    "lib/types.d.ts"
+  ],
+  "directories": {
+    "lib": "lib"
+  }
 }

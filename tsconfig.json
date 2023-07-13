@@ -3,7 +3,7 @@
     "allowJs": true,
     "module": "esnext",
     "target": "es2017",
-    "outDir": "./dist",
+    "outDir": "./lib",
     "rootDir": "./src",
     "strict": true,
     "moduleResolution": "node",

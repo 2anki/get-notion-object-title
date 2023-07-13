@@ -20,7 +20,7 @@ const getTitleFromProperty = (property: any) =>
     ? flattenTextItems(property.title as RichTextItemResponse[])
     : null;
 
-export const getNotionBlockTitle = (notionObject: unknown): any => {
+export const getNotionObjectTitle = (notionObject: unknown): any => {
   const page = notionObject as PageObjectResponse;
   if (isFullPage(page) && page.object === 'page' && page.properties) {
     const propertyKey = ['title', 'Page', 'Name'].find((key) =>

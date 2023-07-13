@@ -30,9 +30,3 @@ describe('Get Notion Object Title', () => {
     expect(getNotionObjectTitle(databaseTitleMock)).toBe('TOPICS');
   });
 });
-
-// describe('Bad path', () => {
-//   it('should return null if no properties', () => {
-//     expect(getNotionBlockTitle({} as PageObjectResponse)).toBe(null);
-//   });
-// });

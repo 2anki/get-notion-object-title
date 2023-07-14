@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run prebuild; tsc && vite build",
     "test": "vitest",
+    "test:watch": "vitest watch",
     "coverage": "vitest --coverage",
     "prebuild": "rm -rf dist"
   },

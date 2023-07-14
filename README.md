@@ -16,6 +16,15 @@ import getNotionObjectTitle from 'get-notion-object-title';
 getNotionObjectTitle(yourBlock); // returns "Human readable block title"
 ```
 
+### Disable emoji
+
+If you already have a way to handle icons and would like to only get the text, you can
+disable the emojis by passing in an option.
+
+```typescript
+getNotionObjectTitle(yourBlock, { emoji: false }); // returns "Human readable block title"
+```
+
 ## How does it work?
 
 The `getNotionObjectTitle` takes a Notion object as input and returns a string.

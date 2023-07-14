@@ -29,4 +29,10 @@ describe('Get Notion Object Title', () => {
   it("database title should be 'TOPICS'", () => {
     expect(getNotionObjectTitle(databaseTitleMock)).toBe('TOPICS');
   });
+
+  it('Disable emoji in page', () => {
+    expect(getNotionObjectTitle(pageEmojiTitleMock, { emoji: false })).toBe(
+      'HTML test'
+    );
+  });
 });

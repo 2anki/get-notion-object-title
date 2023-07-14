@@ -5,8 +5,29 @@ import {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
-import { Icon } from './types';
 import { parseText } from './parse-text';
+
+export type Icon =
+  | {
+      type: 'emoji';
+      emoji: string;
+    }
+  | null
+  | {
+      type: 'external';
+      external: {
+        url: string;
+      };
+    }
+  | null
+  | {
+      type: 'file';
+      file: {
+        url: string;
+        expiry_time: string;
+      };
+    }
+  | null;
 
 const getEmoji = (icon: Icon) => (icon && 'emoji' in icon ? icon.emoji : null);
 

@@ -41,13 +41,23 @@ const getTitleFromProperty = (property: any) =>
     ? flattenTextItems(property.title as RichTextItemResponse[])
     : null;
 
-export const getNotionObjectTitle = (notionObject: unknown): any => {
+export type GetNotionObjectTitleOptions = {
+  emoji?: boolean;
+};
+
+export const getNotionObjectTitle = (
+  notionObject: unknown,
+  options: GetNotionObjectTitleOptions = { emoji: true }
+): any => {
   const page = notionObject as PageObjectResponse;
   if (isFullPage(page) && page.object === 'page' && page.properties) {
     const propertyKey = ['title', 'Page', 'Name'].find((key) =>
       getTitleFromProperty(page.properties[key])
     );
     if (propertyKey) {
+      if (!options.emoji) {
+        return getTitleFromProperty(page.properties[propertyKey]);
+      }
       const icon = getEmoji(page.icon) ?? '';
       return `${icon}${getTitleFromProperty(page.properties[propertyKey])}`;
     }
@@ -55,8 +65,14 @@ export const getNotionObjectTitle = (notionObject: unknown): any => {
 
   const database = notionObject as DatabaseObjectResponse;
   if (isFullDatabase(database)) {
+    const title = flattenTextItems(database.title);
+
+    if (!options.emoji) {
+      return title;
+    }
+
     const icon = getEmoji(page.icon) ?? '';
-    return `${icon}${flattenTextItems(database.title)}`;
+    return `${icon}${title}`;
   }
 
   return parseText(notionObject);

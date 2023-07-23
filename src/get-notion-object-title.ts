@@ -5,7 +5,7 @@ import {
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
-import { parseText } from './parse-text';
+import { getTextFromBlock } from './getTextFromBlock';
 
 export type Icon =
   | {
@@ -75,5 +75,5 @@ export const getNotionObjectTitle = (
     return `${icon}${title}`;
   }
 
-  return parseText(notionObject);
+  return getTextFromBlock(notionObject);
 };

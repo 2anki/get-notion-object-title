@@ -7,6 +7,7 @@ import databaseEmojiTitleMock from './__mocks/database-emoji-title.json';
 import pageEmojiTitleMock from './__mocks/page-emoji-title.json';
 import pageTitleMock from './__mocks/page-title.json';
 import pageNameMock from './__mocks/page-name.json';
+import unknownPropKeyMock from './__mocks/unknown-prop-key.json';
 
 describe('Get Notion Object Title', () => {
   it("page title should be 'Page Title'", () => {
@@ -33,6 +34,12 @@ describe('Get Notion Object Title', () => {
   it('Disable emoji in page', () => {
     expect(getNotionObjectTitle(pageEmojiTitleMock, { emoji: false })).toBe(
       'HTML test'
+    );
+  });
+
+  it('It uses all keys in the properties', () => {
+    expect(getNotionObjectTitle(unknownPropKeyMock, { emoji: false })).toBe(
+      'How it stores'
     );
   });
 });

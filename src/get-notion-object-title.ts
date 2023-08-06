@@ -41,9 +41,8 @@ const getTitleFromProperty = (property: any) => {
   if (!property) {
     return '';
   }
-  console.log('xxxx', Object.keys(property));
+
   if ('rich_text' in property) {
-    console.log('xxxx');
     return flattenTextItems(property.rich_text as RichTextItemResponse[]);
   }
 

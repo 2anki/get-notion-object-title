@@ -36,11 +36,7 @@ const flattenTextItems = (textItems: RichTextItemResponse[]): string => (Array.i
   ? textItems.map((item) => item.plain_text).join('')
   : '');
 
-const getTitleFromProperty = (property: any) => {
-  if (!property) {
-    return '';
-  }
-
+const getTitleFromProperty = (property: any): string => {
   if ('rich_text' in property) {
     return flattenTextItems(property.rich_text as RichTextItemResponse[]);
   }
@@ -48,6 +44,7 @@ const getTitleFromProperty = (property: any) => {
   if ('title' in property) {
     return flattenTextItems(property.title as RichTextItemResponse[]);
   }
+  return '';
 };
 
 export type GetNotionObjectTitleOptions = {

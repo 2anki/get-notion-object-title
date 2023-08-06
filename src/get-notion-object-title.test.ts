@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, it, expect } from 'vitest';
 
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import { getNotionObjectTitle } from './get-notion-object-title';
 
 import databaseTitleMock from './__mocks/database-title.json';

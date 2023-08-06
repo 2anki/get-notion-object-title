@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // vite.config.ts
 import path from 'path';
 import { defineConfig } from 'vite';

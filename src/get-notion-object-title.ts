@@ -32,10 +32,9 @@ export type Icon =
 
 const getEmoji = (icon: Icon) => (icon && 'emoji' in icon ? icon.emoji : null);
 
-const flattenTextItems = (textItems: RichTextItemResponse[]): string =>
-  Array.isArray(textItems)
-    ? textItems.map((item) => item.plain_text).join('')
-    : '';
+const flattenTextItems = (textItems: RichTextItemResponse[]): string => (Array.isArray(textItems)
+  ? textItems.map((item) => item.plain_text).join('')
+  : '');
 
 const getTitleFromProperty = (property: any) => {
   if (!property) {
@@ -57,13 +56,11 @@ export type GetNotionObjectTitleOptions = {
 
 export const getNotionObjectTitle = (
   notionObject: unknown,
-  options: GetNotionObjectTitleOptions = { emoji: true }
+  options: GetNotionObjectTitleOptions = { emoji: true },
 ): any => {
   const page = notionObject as PageObjectResponse;
   if (isFullPage(page) && page.object === 'page' && page.properties) {
-    const propertyKey = ['title', 'Page', 'Name', 'Topic'].find((key) =>
-      getTitleFromProperty(page.properties[key])
-    );
+    const propertyKey = ['title', 'Page', 'Name', 'Topic'].find((key) => getTitleFromProperty(page.properties[key]));
     const icon = getEmoji(page.icon) ?? '';
 
     if (propertyKey) {
@@ -73,11 +70,11 @@ export const getNotionObjectTitle = (
       return `${icon}${getTitleFromProperty(page.properties[propertyKey])}`;
     }
 
-    let pageTitleFromAnyProperty = Object.keys(page.properties)
+    const pageTitleFromAnyProperty = Object.keys(page.properties)
       .reverse()
       .map((key) => getTitleFromProperty(page.properties[key]))
       .filter((property) => property)
-      .reduce((acc, curr) => acc + ' ' + (curr as string), '');
+      .reduce((acc, curr) => `${acc} ${curr as string}`, '');
 
     if (!options.emoji) {
       return pageTitleFromAnyProperty;

@@ -13,14 +13,12 @@ export type Icon =
       type: 'emoji';
       emoji: string;
     }
-  | null
   | {
       type: 'external';
       external: {
         url: string;
       };
     }
-  | null
   | {
       type: 'file';
       file: {
@@ -36,7 +34,11 @@ const flattenTextItems = (textItems: RichTextItemResponse[]): string => (Array.i
   ? textItems.map((item) => item.plain_text).join('')
   : '');
 
-const getTitleFromProperty = (property: any): string => {
+const getTitleFromProperty = (property: any): string | undefined => {
+  if (!property) {
+    return '';
+  }
+
   if ('rich_text' in property) {
     return flattenTextItems(property.rich_text as RichTextItemResponse[]);
   }
@@ -44,7 +46,8 @@ const getTitleFromProperty = (property: any): string => {
   if ('title' in property) {
     return flattenTextItems(property.title as RichTextItemResponse[]);
   }
-  return '';
+
+  return undefined;
 };
 
 export type GetNotionObjectTitleOptions = {

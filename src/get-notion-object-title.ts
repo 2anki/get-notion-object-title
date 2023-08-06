@@ -1,5 +1,6 @@
 import { isFullDatabase, isFullPage } from '@notionhq/client';
 import {
+  BlockObjectResponse,
   DatabaseObjectResponse,
   PageObjectResponse,
   RichTextItemResponse,
@@ -36,10 +37,20 @@ const flattenTextItems = (textItems: RichTextItemResponse[]): string =>
     ? textItems.map((item) => item.plain_text).join('')
     : '';
 
-const getTitleFromProperty = (property: any) =>
-  property && 'title' in property
-    ? flattenTextItems(property.title as RichTextItemResponse[])
-    : null;
+const getTitleFromProperty = (property: any) => {
+  if (!property) {
+    return '';
+  }
+  console.log('xxxx', Object.keys(property));
+  if ('rich_text' in property) {
+    console.log('xxxx');
+    return flattenTextItems(property.rich_text as RichTextItemResponse[]);
+  }
+
+  if ('title' in property) {
+    return flattenTextItems(property.title as RichTextItemResponse[]);
+  }
+};
 
 export type GetNotionObjectTitleOptions = {
   emoji?: boolean;
@@ -51,16 +62,29 @@ export const getNotionObjectTitle = (
 ): any => {
   const page = notionObject as PageObjectResponse;
   if (isFullPage(page) && page.object === 'page' && page.properties) {
-    const propertyKey = ['title', 'Page', 'Name'].find((key) =>
+    const propertyKey = ['title', 'Page', 'Name', 'Topic'].find((key) =>
       getTitleFromProperty(page.properties[key])
     );
+    const icon = getEmoji(page.icon) ?? '';
+
     if (propertyKey) {
       if (!options.emoji) {
         return getTitleFromProperty(page.properties[propertyKey]);
       }
-      const icon = getEmoji(page.icon) ?? '';
       return `${icon}${getTitleFromProperty(page.properties[propertyKey])}`;
     }
+
+    let pageTitleFromAnyProperty = Object.keys(page.properties)
+      .reverse()
+      .map((key) => getTitleFromProperty(page.properties[key]))
+      .filter((property) => property)
+      .reduce((acc, curr) => acc + ' ' + (curr as string), '');
+
+    if (!options.emoji) {
+      return pageTitleFromAnyProperty;
+    }
+
+    return `${icon}${pageTitleFromAnyProperty}`;
   }
 
   const database = notionObject as DatabaseObjectResponse;
@@ -75,5 +99,7 @@ export const getNotionObjectTitle = (
     return `${icon}${title}`;
   }
 
-  return getTextFromBlock(notionObject);
+  return (notionObject as BlockObjectResponse)?.type !== undefined
+    ? getTextFromBlock(notionObject)
+    : 'Untitled';
 };

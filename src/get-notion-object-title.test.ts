@@ -20,7 +20,7 @@ describe('Get Notion Object Title', () => {
 
   it("page title should be 'long name....'", () => {
     expect(getNotionObjectTitle(pageNameMock)).toBe(
-      'What is the optimum daily learning time - SuperMemopedia'
+      'What is the optimum daily learning time - SuperMemopedia',
     );
   });
 
@@ -33,13 +33,13 @@ describe('Get Notion Object Title', () => {
 
   it('Disable emoji in page', () => {
     expect(getNotionObjectTitle(pageEmojiTitleMock, { emoji: false })).toBe(
-      'HTML test'
+      'HTML test',
     );
   });
 
   it('It uses all keys in the properties', () => {
     expect(getNotionObjectTitle(unknownPropKeyMock, { emoji: false })).toBe(
-      'How it stores'
+      'How it stores',
     );
   });
 });

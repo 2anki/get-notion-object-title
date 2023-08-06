@@ -8,7 +8,9 @@
     "test": "vitest",
     "test:watch": "vitest watch",
     "coverage": "vitest --coverage",
-    "prebuild": "rm -rf dist"
+    "prebuild": "rm -rf dist",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
   },
   "repository": {
     "type": "git",

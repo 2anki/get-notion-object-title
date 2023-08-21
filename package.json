@@ -33,7 +33,7 @@
     "@rollup/plugin-typescript": "^11.1.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
     "tslib": "^2.6.0",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.2"
   },
   "directories": {
     "lib": "dist"

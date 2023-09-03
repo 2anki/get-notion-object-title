@@ -6,4 +6,4 @@ updates:
       interval: 'weekly'
     groups:
       development-dependencies:
-        - dependency-type: "development"
+        - dependency-type: "all"

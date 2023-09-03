@@ -5,5 +5,5 @@ updates:
     schedule:
       interval: 'weekly'
     groups:
-      dev-dependencies:
-        - dependency-type: "all"
+      development-dependencies:
+        - dependency-type: "development"

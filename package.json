@@ -29,13 +29,13 @@
   },
   "homepage": "https://github.com/2anki/get-notion-object-title#readme",
   "dependencies": {
-    "@notionhq/client": "^2.2.15"
+    "@notionhq/client": "^2.2.15",
+    "eslint": "^8.57.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^8.0.1",
-    "eslint": "^9.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "rollup-plugin-typescript-paths": "^1.5.0",

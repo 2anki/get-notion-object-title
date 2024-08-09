@@ -29,10 +29,10 @@
   },
   "homepage": "https://github.com/2anki/get-notion-object-title#readme",
   "dependencies": {
-    "@notionhq/client": "^2.2.15",
-    "eslint": "^8.57.0"
+    "@notionhq/client": "^2.2.15"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
     "@rollup/plugin-typescript": "^11.1.6",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^8.0.1",

@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/2anki/get-notion-object-title#readme",
   "dependencies": {
-    "@notionhq/client": "^2.2.15"
+    "@notionhq/client": "^5.1.0"
   },
   "devDependencies": {
     "typescript": "^5.0.0",

@@ -26,9 +26,26 @@ export type Icon =
         expiry_time: string;
       };
     }
+  | {
+      type: 'custom_emoji';
+      custom_emoji: {
+        id: string;
+        name: string;
+        url: string;
+      };
+    }
   | null;
 
-const getEmoji = (icon: Icon) => (icon && 'emoji' in icon ? icon.emoji : null);
+const getEmoji = (icon: Icon) => {
+  if (icon && 'emoji' in icon) {
+    return icon.emoji;
+  }
+  if (icon && 'custom_emoji' in icon) {
+    // For custom emojis, return the name as a fallback since we can't display the actual custom emoji
+    return icon.custom_emoji.name;
+  }
+  return null;
+};
 
 const flattenTextItems = (textItems: RichTextItemResponse[]): string => (Array.isArray(textItems)
   ? textItems.map((item) => item.plain_text).join('')

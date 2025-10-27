@@ -40,9 +40,9 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
-    "semantic-release": "^24.0.0",
+    "semantic-release": "^25.0.1",
     "tslib": "^2.6.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.3"
   },
   "directories": {
     "lib": "dist"

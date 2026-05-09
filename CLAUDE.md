@@ -4,13 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm test` — run vitest once
-- `npm run test:watch` — vitest in watch mode
-- `npm run coverage` — vitest with coverage
-- `npm run lint` / `npm run lint:fix` — ESLint over `*.ts`
-- `npm run build` — clean `dist/`, run `tsc`, then `vite build` (produces ES + CJS bundles plus `.d.ts` declarations)
+This project uses **pnpm 11** (see `packageManager` in `package.json`). Use `pnpm install` to set up; `npm`/`yarn` will produce a divergent tree from `pnpm-lock.yaml`.
 
-Run a single test by name: `npx vitest run -t "page title should be 'Page Title'"`.
+- `pnpm test` — run vitest once
+- `pnpm test:watch` — vitest in watch mode
+- `pnpm coverage` — vitest with coverage
+- `pnpm lint` / `pnpm lint:fix` — ESLint over `*.ts`
+- `pnpm run build` — clean `dist/`, run `tsc`, then `vite build` (produces ES + CJS bundles plus `.d.ts` declarations)
+
+Run a single test by name: `pnpm exec vitest run -t "page title should be 'Page Title'"`.
+
+Approved postinstall scripts live in `pnpm-workspace.yaml` under `allowBuilds` (currently just `esbuild`, needed by vitest). pnpm 11 blocks postinstalls by default; if a new dep needs one, run `pnpm approve-builds <pkg>` and commit the resulting `pnpm-workspace.yaml` change.
 
 ## Architecture
 

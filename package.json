@@ -3,8 +3,9 @@
   "version": "0.2.1",
   "description": "get human readable names from Notion objects.",
   "main": "dist/get-notion-object-title.js",
+  "packageManager": "pnpm@11.0.9",
   "scripts": {
-    "build": "npm run prebuild; tsc && vite build",
+    "build": "pnpm run prebuild && tsc && vite build",
     "test": "vitest",
     "test:watch": "vitest watch",
     "coverage": "vitest --coverage",
@@ -32,16 +33,17 @@
     "@notionhq/client": "^5.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
-    "eslint": "^9.12.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^8.0.1",
+    "eslint": "^9.12.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "semantic-release": "^24.0.0",
     "tslib": "^2.6.3",
+    "typescript": "^5.0.0",
+    "vite": "^7.0.0",
     "vitest": "^3.2.4"
   },
   "directories": {

@@ -34,14 +34,10 @@ describe('Get Notion Object Title', () => {
   });
 
   it('Disable emoji in page', () => {
-    expect(getNotionObjectTitle(pageEmojiTitleMock, { emoji: false })).toBe(
-      'HTML test',
-    );
+    expect(getNotionObjectTitle(pageEmojiTitleMock, { emoji: false })).toBe('HTML test');
   });
 
   it('It uses all keys in the properties', () => {
-    expect(getNotionObjectTitle(unknownPropKeyMock, { emoji: false })).toBe(
-      'How it stores',
-    );
+    expect(getNotionObjectTitle(unknownPropKeyMock, { emoji: false })).toBe('How it stores');
   });
 });

@@ -47,9 +47,8 @@ const getEmoji = (icon: Icon) => {
   return null;
 };
 
-const flattenTextItems = (textItems: RichTextItemResponse[]): string => (Array.isArray(textItems)
-  ? textItems.map((item) => item.plain_text).join('')
-  : '');
+const flattenTextItems = (textItems: RichTextItemResponse[]): string =>
+  Array.isArray(textItems) ? textItems.map((item) => item.plain_text).join('') : '';
 
 const getTitleFromProperty = (property: any): string | undefined => {
   if (!property) {
@@ -77,7 +76,9 @@ export const getNotionObjectTitle = (
 ): any => {
   const page = notionObject as PageObjectResponse;
   if (isFullPage(page) && page.object === 'page' && page.properties) {
-    const propertyKey = ['title', 'Page', 'Name', 'Topic'].find((key) => getTitleFromProperty(page.properties[key]));
+    const propertyKey = ['title', 'Page', 'Name', 'Topic'].find((key) =>
+      getTitleFromProperty(page.properties[key]),
+    );
     const icon = getEmoji(page.icon) ?? '';
 
     if (propertyKey) {

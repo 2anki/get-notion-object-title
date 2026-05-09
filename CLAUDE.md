@@ -9,7 +9,8 @@ This project uses **pnpm 11** (see `packageManager` in `package.json`). Use `pnp
 - `pnpm test` — run vitest once
 - `pnpm test:watch` — vitest in watch mode
 - `pnpm coverage` — vitest with coverage
-- `pnpm lint` / `pnpm lint:fix` — ESLint over `*.ts`
+- `pnpm lint` / `pnpm lint:fix` — oxlint (config in `.oxlintrc.json`)
+- `pnpm format` / `pnpm format:check` — oxfmt (config in `.oxfmtrc.json`)
 - `pnpm run build` — clean `dist/`, run `tsc`, then `vite build` (produces ES + CJS bundles plus `.d.ts` declarations)
 
 Run a single test by name: `pnpm exec vitest run -t "page title should be 'Page Title'"`.
@@ -22,12 +23,12 @@ This is a tiny single-purpose npm package: given a Notion API object, return a h
 
 Dispatch in `getNotionObjectTitle` is by object kind, in this order:
 
-1. **Page** (`isFullPage`): scans `page.properties` for the first key in `['title', 'Page', 'Name', 'Topic']` whose value yields text via `getTitleFromProperty` (which handles both `title` and `rich_text` shaped properties). If none of those keys match, it falls back to concatenating the text of *all* properties in reverse key order — this is what lets `unknown-prop-key.json` resolve. Page icon emoji is prepended unless `emoji: false`.
+1. **Page** (`isFullPage`): scans `page.properties` for the first key in `['title', 'Page', 'Name', 'Topic']` whose value yields text via `getTitleFromProperty` (which handles both `title` and `rich_text` shaped properties). If none of those keys match, it falls back to concatenating the text of _all_ properties in reverse key order — this is what lets `unknown-prop-key.json` resolve. Page icon emoji is prepended unless `emoji: false`.
 2. **Database** (`isFullDatabase`): uses the top-level `title` rich-text array. Same icon rule.
 3. **Block-like** (anything with a `.type`): delegated to `getTextFromBlock` in `src/getTextFromBlock.js` — this file is vendored from `makenotion/notion-sdk-js`'s `parse-text-from-any-block-type` example and intentionally kept as JS. Touch it sparingly; updates should track upstream.
 4. Otherwise returns `'Untitled'`.
 
-The local `Icon` type union in `get-notion-object-title.ts` exists because `@notionhq/client`'s exported types don't expose a single icon union that includes `custom_emoji`. For `custom_emoji`, the emoji *name* is returned as a fallback since the actual image can't be rendered in a string.
+The local `Icon` type union in `get-notion-object-title.ts` exists because `@notionhq/client`'s exported types don't expose a single icon union that includes `custom_emoji`. For `custom_emoji`, the emoji _name_ is returned as a fallback since the actual image can't be rendered in a string.
 
 ## Tests
 

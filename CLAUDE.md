@@ -28,7 +28,7 @@ Dispatch in `getNotionObjectTitle` is by object kind, in this order:
 3. **Block-like** (anything with a `.type`): delegated to `getTextFromBlock` in `src/getTextFromBlock.js` — this file is vendored from `makenotion/notion-sdk-js`'s `parse-text-from-any-block-type` example and intentionally kept as JS. Touch it sparingly; updates should track upstream.
 4. Otherwise returns `'Untitled'`.
 
-The local `Icon` type union in `get-notion-object-title.ts` exists because `@notionhq/client`'s exported types don't expose a single icon union that includes `custom_emoji`. For `custom_emoji`, the emoji _name_ is returned as a fallback since the actual image can't be rendered in a string.
+`Icon` is re-exported as an alias for `PageIconResponse | null` from `@notionhq/client`. For non-renderable variants (`custom_emoji`, Noticon `icon`), the SDK's `name` field is returned as a fallback.
 
 ## Tests
 

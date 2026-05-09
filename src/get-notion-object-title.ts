@@ -2,47 +2,27 @@ import { isFullDatabase, isFullPage } from '@notionhq/client';
 import {
   BlockObjectResponse,
   DatabaseObjectResponse,
+  PageIconResponse,
   PageObjectResponse,
   RichTextItemResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 
 import { getTextFromBlock } from './getTextFromBlock';
 
-export type Icon =
-  | {
-      type: 'emoji';
-      emoji: string;
-    }
-  | {
-      type: 'external';
-      external: {
-        url: string;
-      };
-    }
-  | {
-      type: 'file';
-      file: {
-        url: string;
-        expiry_time: string;
-      };
-    }
-  | {
-      type: 'custom_emoji';
-      custom_emoji: {
-        id: string;
-        name: string;
-        url: string;
-      };
-    }
-  | null;
+export type Icon = PageIconResponse | null;
 
 const getEmoji = (icon: Icon) => {
-  if (icon && 'emoji' in icon) {
+  if (!icon) {
+    return null;
+  }
+  if (icon.type === 'emoji') {
     return icon.emoji;
   }
-  if (icon && 'custom_emoji' in icon) {
-    // For custom emojis, return the name as a fallback since we can't display the actual custom emoji
+  if (icon.type === 'custom_emoji') {
     return icon.custom_emoji.name;
+  }
+  if (icon.type === 'icon') {
+    return icon.icon.name;
   }
   return null;
 };
